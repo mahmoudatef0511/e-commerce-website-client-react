@@ -12,7 +12,7 @@ import {
 } from "../graphql/operations";
 
 function App() {
-  console.log(process.env);
+  console.log(graphqlURL);
   const [currentCategory, setCurrentCategory] = useState("all");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
