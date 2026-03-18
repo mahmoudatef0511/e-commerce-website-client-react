@@ -1,6 +1,5 @@
 // Get all products (for product listing page)
-export const graphqlURL =
-  process.env.API_URL || "http://localhost:8000/graphql";
+export const graphqlURL = process.env.API_URL;
 
 export const getAllProductsQuery = (category) => {
   return {
