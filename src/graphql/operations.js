@@ -1,5 +1,5 @@
 // Get all products (for product listing page)
-export const graphqlURL = process.env.API_URL;
+export const graphqlURL = process.env.REACT_APP_API_URL;
 
 export const getAllProductsQuery = (category) => {
   return {
