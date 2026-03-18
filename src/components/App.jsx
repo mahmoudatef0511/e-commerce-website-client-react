@@ -5,6 +5,7 @@ import PDP from "../pages/PDP";
 import CartOverlay from "../pages/CartOverlay";
 import { useState, useEffect } from "react";
 import {
+  graphqlURL,
   getAllProductsQuery,
   getCategoriesQuery,
   createOrderMutation,
@@ -32,7 +33,7 @@ function App() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8000/graphql", {
+        const response = await fetch(graphqlURL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +52,7 @@ function App() {
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8000/graphql", {
+        const response = await fetch(graphqlURL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -75,7 +76,7 @@ function App() {
   const createOrder = async (order) => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:8000/graphql", {
+      const response = await fetch(graphqlURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

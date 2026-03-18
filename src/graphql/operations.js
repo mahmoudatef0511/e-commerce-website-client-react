@@ -1,4 +1,7 @@
 // Get all products (for product listing page)
+export const graphqlURL =
+  process.env.API_URL || "http://localhost:8000/graphql";
+
 export const getAllProductsQuery = (category) => {
   return {
     query: `
@@ -43,7 +46,7 @@ export const getCategoriesQuery = () => {
 };
 
 // Place order (checkout)
-export const createOrderMutation = ({items, total}) => {
+export const createOrderMutation = ({ items, total }) => {
   const itemsGraphQL = items
     .map(
       (item) => `
