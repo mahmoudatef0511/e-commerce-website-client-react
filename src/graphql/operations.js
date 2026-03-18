@@ -1,4 +1,3 @@
-// Get all products (for product listing page)
 export const graphqlURL = import.meta.env.VITE_API_URL;
 
 export const getAllProductsQuery = (category) => {
@@ -44,7 +43,6 @@ export const getCategoriesQuery = () => {
   };
 };
 
-// Place order (checkout)
 export const createOrderMutation = ({ items, total }) => {
   const itemsGraphQL = items
     .map(
