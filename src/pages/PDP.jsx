@@ -2,7 +2,6 @@ import { useState } from "react";
 import AttributesList from "../components/AttributesList";
 import BoldPTag from "../components/BoldPTag";
 import CustomButton from "../components/CustomButton";
-import { Link } from "react-router";
 
 function PDP({ product, onAddToCart }) {
   const {
@@ -47,8 +46,11 @@ function PDP({ product, onAddToCart }) {
 
   function addProductToCart() {
     const attributesValues = Object.values(fullAttributeObject);
-    if (!attributesValues.length || attributesValues.includes("") || !inStock)
+    if (!attributesValues.length || attributesValues.includes("") || !inStock) {
+      console.log(attributesValues.length);
       return;
+    }
+
     const cartProduct = {
       productId: product_id,
       id: id + attributesValues.join("-"),
