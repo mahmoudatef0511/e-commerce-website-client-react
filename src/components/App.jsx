@@ -43,6 +43,7 @@ function App() {
         });
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
+        console.log("Products: ", data);
         setProducts(data.data.products);
       } catch (err) {
         setError(err.message);
@@ -62,6 +63,7 @@ function App() {
         });
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
+        console.log("Categories: ", data);
         setCategories(data.data.categories);
       } catch (err) {
         setError(err.message);
