@@ -179,6 +179,7 @@ function App() {
         }),
       ];
     });
+    setIsCartOpen(true);
   }
 
   return (
