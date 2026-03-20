@@ -3,7 +3,7 @@ function AttributeItem({ item, type, selected, onSelect, attributeName }) {
   return (
     <div
       className="col-2"
-      data-testid={`cart-item-attribute-${attributeName.split(" ").join("-")}-${attributeName.split(" ").join("-")}${selected ? "-selected" : ""}`}
+      data-testid={`cart-item-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value.toLowerCase().split(" ").join("-")}${selected ? "-selected" : ""}`}
     >
       {type === "text" && (
         <p
