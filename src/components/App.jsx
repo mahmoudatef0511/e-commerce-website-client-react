@@ -217,7 +217,7 @@ function App() {
                 <Category
                   products={products}
                   onFastShopping={handleAddToCart}
-                  category={categories[0].name}
+                  category="all"
                 />
               }
             />
