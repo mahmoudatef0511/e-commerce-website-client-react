@@ -19,7 +19,7 @@ function Attribute({
   return (
     <div
       className="row g-1"
-      data-testid={`${inCart ? "cart-item" : "product"}-attribute-${name.split(" ").join("-")}`}
+      data-testid={`${inCart ? "cart-item" : "product"}-attribute-${name.toLowerCase().split(" ").join("-")}`}
     >
       <BoldPTag>{name.toUpperCase()}:</BoldPTag>
       {items.map((item, index) => (
