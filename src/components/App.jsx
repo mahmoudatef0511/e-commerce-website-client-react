@@ -12,7 +12,6 @@ import {
 } from "../graphql/operations";
 
 function App() {
-  console.log(graphqlURL);
   const [currentCategory, setCurrentCategory] = useState("all");
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -43,7 +42,6 @@ function App() {
         });
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
-        console.log("Products: ", data);
         setProducts(data.data.products);
       } catch (err) {
         setError(err.message);
@@ -63,7 +61,6 @@ function App() {
         });
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
-        console.log("Categories: ", data);
         setCategories(data.data.categories);
       } catch (err) {
         setError(err.message);
