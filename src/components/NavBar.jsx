@@ -12,6 +12,30 @@ function NavBar({
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3 px-5 fs-4 row">
         <div className="col-6">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link
+                to={`/all`}
+                className={`nav-link mx-2 ${"all" === activeCategory ? "active" : ""}`}
+                onClick={handleCategory}
+                data-testid={`${"all" === activeCategory ? "active-" : ""}category-link`}
+              ></Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to={`/clothes`}
+                className={`nav-link mx-2 ${"clothes" === activeCategory ? "active" : ""}`}
+                onClick={handleCategory}
+                data-testid={`${"clothes" === activeCategory ? "active-" : ""}category-link`}
+              ></Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to={`/tech`}
+                className={`nav-link mx-2 ${"tech" === activeCategory ? "active" : ""}`}
+                onClick={handleCategory}
+                data-testid={`${"tech" === activeCategory ? "active-" : ""}category-link`}
+              ></Link>
+            </li>
             {categories.map((category) => (
               <li className="nav-item" key={category.name}>
                 <Link
