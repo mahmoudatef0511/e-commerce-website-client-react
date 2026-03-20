@@ -53,7 +53,10 @@ function CartOverlay({
   }
 
   return (
-    <div className="container cart-container bg-light" data-testid="cart-overlay">
+    <div
+      className="container cart-container bg-light"
+      data-testid="cart-overlay"
+    >
       <span>
         <strong>My Bag, </strong>
         {totalItemsCount} item{`${totalItemsCount === 1 ? "" : "s"}`}
@@ -87,9 +90,7 @@ function CartOverlay({
         </div>
       </div>
       <div className="my-4 w-100">
-        <Link to={`/category/${currentActiveCategory}`}>
-          <CustomButton onClick={handlePlaceOrder}>PLACE ORDER</CustomButton>
-        </Link>
+        <CustomButton onClick={handlePlaceOrder}>PLACE ORDER</CustomButton>
       </div>
     </div>
   );

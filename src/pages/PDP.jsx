@@ -123,25 +123,13 @@ function PDP({ product, onAddToCart }) {
             {amount}
           </BoldPTag>
           <p>
-            {inStock ? (
-              <Link to={`/category/all`}>
-                <CustomButton
-                  dataTestID={"add-to-cart"}
-                  onClick={addProductToCart}
-                  disabled={!inStock}
-                >
-                  ADD TO CART
-                </CustomButton>
-              </Link>
-            ) : (
-              <CustomButton
-                dataTestID={"add-to-cart"}
-                onClick={addProductToCart}
-                disabled={!inStock}
-              >
-                ADD TO CART
-              </CustomButton>
-            )}
+            <CustomButton
+              dataTestID={"add-to-cart"}
+              onClick={addProductToCart}
+              disabled={!inStock}
+            >
+              ADD TO CART
+            </CustomButton>
           </p>
           <p data-testid="product-description">
             {parseDescription(description)}
