@@ -10,7 +10,7 @@ function AttributeItem({
   return (
     <div
       className="col-2"
-      data-testid={`${inCart ? "cart-item" : "product"}-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value.toLowerCase().split(" ").join("-")}${selected ? "-selected" : ""}`}
+      data-testid={`${inCart ? "cart-item" : "product"}-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value}${selected ? "-selected" : ""}`}
     >
       {type === "text" && (
         <p
