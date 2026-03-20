@@ -221,6 +221,26 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/clothes"
+              element={
+                <Category
+                  products={products}
+                  onFastShopping={handleAddToCart}
+                  category="clothes"
+                />
+              }
+            />
+            <Route
+              path="/tech"
+              element={
+                <Category
+                  products={products}
+                  onFastShopping={handleAddToCart}
+                  category="tech"
+                />
+              }
+            />
             {categories.map((category) => {
               return (
                 <Route
