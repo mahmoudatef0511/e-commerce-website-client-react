@@ -1,9 +1,16 @@
-function AttributeItem({ item, type, selected, onSelect, attributeName }) {
+function AttributeItem({
+  item,
+  type,
+  selected,
+  onSelect,
+  attributeName,
+  inCart,
+}) {
   const { displayValue, value } = item;
   return (
     <div
       className="col-2"
-      data-testid={`cart-item-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value.toLowerCase().split(" ").join("-")}${selected ? "-selected" : ""}`}
+      data-testid={`${inCart ? "cart-item" : "product"}-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value.toLowerCase().split(" ").join("-")}${selected ? "-selected" : ""}`}
     >
       {type === "text" && (
         <p

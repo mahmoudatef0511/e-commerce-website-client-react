@@ -30,6 +30,7 @@ function Attribute({
           type={type}
           selected={selected === item.value}
           onSelect={() => handleSelectAttribute(item.value)}
+          inCart={inCart}
         />
       ))}
     </div>
