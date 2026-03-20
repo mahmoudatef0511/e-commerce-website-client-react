@@ -36,7 +36,7 @@ function ProductCard({ product, onFastShopping }) {
   return (
     <div
       className={`col-4 p-5 my-5 product-container ${inStock ? "instock" : "outstock"}-product`}
-      data-testid={`product-${name.split(" ").join("-")}`}
+      data-testid={`product-${name.toLowerCase().split(" ").join("-")}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
