@@ -1,11 +1,12 @@
 import { Link } from "react-router";
-import { categories } from "../data";
+// import { categories } from "../data";
 
 function NavBar({
   handleCategory,
   activeCategory,
   cartProductsCount,
   toggleCart,
+  categories
 }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3 px-5 fs-4 row">

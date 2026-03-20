@@ -164,6 +164,7 @@ function App() {
           0,
         )}
         toggleCart={toggleCart}
+        categories={categories}
       />
       {isCartOpen && (
         <CartOverlay
