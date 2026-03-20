@@ -53,7 +53,7 @@ function CartOverlay({
   }
 
   return (
-    <div className="container cart-container bg-light">
+    <div className="container cart-container bg-light" data-testid="cart-overlay">
       <span>
         <strong>My Bag, </strong>
         {totalItemsCount} item{`${totalItemsCount === 1 ? "" : "s"}`}
