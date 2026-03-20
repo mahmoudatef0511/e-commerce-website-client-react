@@ -11,12 +11,10 @@ import {
   createOrderMutation,
 } from "../graphql/operations";
 
-import { categories } from "../data";
-
 function App() {
   const [currentCategory, setCurrentCategory] = useState("all");
   const [products, setProducts] = useState([]);
-  // const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -63,7 +61,7 @@ function App() {
         });
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
-        // setCategories(data.data.categories);
+        setCategories(data.data.categories);
       } catch (err) {
         setError(err.message);
       } finally {
