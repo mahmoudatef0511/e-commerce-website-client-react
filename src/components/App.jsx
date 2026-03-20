@@ -189,7 +189,7 @@ function App() {
           {categories.map((category) => {
             return (
               <Route
-                path={`/category/${category.name}`}
+                path={`/${category.name}`}
                 element={
                   <Category
                     products={products}
@@ -203,7 +203,7 @@ function App() {
           {products.map((product) => {
             return (
               <Route
-                path={`/category/${product.category}/${product.id}`}
+                path={`/${product.category}/${product.id}`}
                 element={
                   <PDP product={product} onAddToCart={handleAddToCart} />
                 }

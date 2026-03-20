@@ -15,7 +15,7 @@ function NavBar({
             {categories.map((category) => (
               <li className="nav-item" key={category.name}>
                 <Link
-                  to={`/category/${category.name}`}
+                  to={`/${category.name}`}
                   className={`nav-link mx-2 ${category.name === activeCategory ? "active" : ""}`}
                   onClick={handleCategory}
                   data-testid={`${category.name === activeCategory ? "active-" : ""}category-link`}
