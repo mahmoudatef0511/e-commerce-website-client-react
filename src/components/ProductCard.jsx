@@ -49,7 +49,7 @@ function ProductCard({ product, onFastShopping }) {
         />
       )}
       <Link
-        to={`/category/${category}/${id}`}
+        to={`/${category}/${id}`}
         style={{ textDecoration: "none", color: "black" }}
       >
         <div className={`product-card ${isHovered ? "hovered" : ""}`}>
