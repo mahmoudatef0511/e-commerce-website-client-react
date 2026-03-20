@@ -30,38 +30,72 @@ function App() {
   }, [cartProducts]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    // const fetchProducts = async () => {
+    //   try {
+    //     setLoading(true);
+    //     const response = await fetch(graphqlURL, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(getAllProductsQuery("all")),
+    //     });
+    //     if (!response.ok) throw new Error("Failed to fetch");
+    //     const data = await response.json();
+    //     setProducts(data.data.products);
+    //   } catch (err) {
+    //     setError(err.message);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+    // const fetchCategories = async () => {
+    //   try {
+    //     setLoading(true);
+    //     const response = await fetch(graphqlURL, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(getCategoriesQuery()),
+    //     });
+    //     if (!response.ok) throw new Error("Failed to fetch");
+    //     const data = await response.json();
+    //     setCategories(data.data.categories);
+    //   } catch (err) {
+    //     setError(err.message);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+
+    // fetchCategories();
+    // fetchProducts();
+
+    const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(graphqlURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(getAllProductsQuery("all")),
-        });
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setProducts(data.data.products);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    const fetchCategories = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(graphqlURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(getCategoriesQuery()),
-        });
-        if (!response.ok) throw new Error("Failed to fetch");
-        const data = await response.json();
-        setCategories(data.data.categories);
+        const [categoriesRes, productsRes] = await Promise.all([
+          fetch(graphqlURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(getCategoriesQuery()),
+          }),
+          fetch(graphqlURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(getAllProductsQuery("all")),
+          }),
+        ]);
+
+        if (!categoriesRes.ok || !productsRes.ok)
+          throw new Error("Failed to fetch");
+
+        const categoriesData = await categoriesRes.json();
+        const productsData = await productsRes.json();
+
+        setCategories(categoriesData.data.categories);
+        setProducts(productsData.data.products);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -69,8 +103,7 @@ function App() {
       }
     };
 
-    fetchCategories();
-    fetchProducts();
+    fetchData();
   }, []); // Empty array = run once on mount
 
   const createOrder = async (order) => {
