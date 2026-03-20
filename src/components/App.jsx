@@ -137,7 +137,7 @@ function App() {
     setIsCartOpen(false);
   }
   function toggleCart() {
-    if (cartProducts.length) setIsCartOpen((current) => !current);
+    setIsCartOpen((current) => !current);
   }
   function checkIfProductExistsInCart(product, cartProducts) {
     let productFound = false,
