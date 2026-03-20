@@ -7,7 +7,6 @@ function AttributeItem({
   inCart,
 }) {
   const { displayValue, value } = item;
-  console.log("IN CART: ", inCart);
   return (
     <div
       className="col-2"

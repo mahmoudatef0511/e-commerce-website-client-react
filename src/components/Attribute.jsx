@@ -16,7 +16,6 @@ function Attribute({
       selectedAttribute({ [name]: value });
     }
   }
-  console.log("IN CART: ", inCart);
   return (
     <div
       className="row g-1"
