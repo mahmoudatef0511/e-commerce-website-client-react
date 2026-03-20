@@ -205,68 +205,48 @@ function App() {
         <div className="overlay" onClick={() => setIsCartOpen(false)}></div>
       )}
       <div className="container" style={isCartOpen ? { opacity: "40%" } : {}}>
-        {/* {loading ? (
+        {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>Error: {error}</p>
-        ) : ( */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Category
-                products={products}
-                onFastShopping={handleAddToCart}
-                category="all"
-              />
-            }
-          />
-          <Route
-            path="/clothes"
-            element={
-              <Category
-                products={products}
-                onFastShopping={handleAddToCart}
-                category="clothes"
-              />
-            }
-          />
-          <Route
-            path="/tech"
-            element={
-              <Category
-                products={products}
-                onFastShopping={handleAddToCart}
-                category="tech"
-              />
-            }
-          />
-          {categories.map((category) => {
-            return (
-              <Route
-                path={`/${category.name}`}
-                element={
-                  <Category
-                    products={products}
-                    category={category.name}
-                    onFastShopping={handleAddToCart}
-                  />
-                }
-              />
-            );
-          })}
-          {products.map((product) => {
-            return (
-              <Route
-                path={`/${product.category}/${product.id}`}
-                element={
-                  <PDP product={product} onAddToCart={handleAddToCart} />
-                }
-              />
-            );
-          })}
-        </Routes>
-        {/* )} */}
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Category
+                  products={products}
+                  onFastShopping={handleAddToCart}
+                  category={categories[0].name}
+                />
+              }
+            />
+            {categories.map((category) => {
+              return (
+                <Route
+                  path={`/${category.name}`}
+                  element={
+                    <Category
+                      products={products}
+                      category={category.name}
+                      onFastShopping={handleAddToCart}
+                    />
+                  }
+                />
+              );
+            })}
+            {products.map((product) => {
+              return (
+                <Route
+                  path={`/${product.category}/${product.id}`}
+                  element={
+                    <PDP product={product} onAddToCart={handleAddToCart} />
+                  }
+                />
+              );
+            })}
+          </Routes>
+        )}
       </div>
     </div>
   );
