@@ -44,7 +44,11 @@ function PDP({ product, onAddToCart }) {
 
   function addProductToCart(count) {
     const attributesValues = Object.values(fullAttributeObject);
-    if (count !== attributesValues.length || !count) return;
+    if (
+      count !== attributesValues.length ||
+      (!count && attributesValues.length)
+    )
+      return;
     const cartProduct = {
       productId: product_id,
       id: id + attributesValues.join("-"),

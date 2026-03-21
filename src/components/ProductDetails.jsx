@@ -34,7 +34,10 @@ function ProductDetails({
         <CustomButton
           dataTestID={"add-to-cart"}
           onClick={() => addProductToCart(selectedAttributesCount)}
-          disabled={!inStock || selectedAttributesCount !== attributes.length}
+          disabled={
+            !inStock ||
+            (attributes.length && selectedAttributesCount !== attributes.length)
+          }
         >
           ADD TO CART
         </CustomButton>
