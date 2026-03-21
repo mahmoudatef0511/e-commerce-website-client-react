@@ -1,8 +1,5 @@
 import { useState } from "react";
-import AttributesList from "../components/AttributesList";
-import BoldPTag from "../components/BoldPTag";
-import CustomButton from "../components/CustomButton";
-import { Link } from "react-router";
+import ProductDetails from "../components/ProductDetails";
 
 function PDP({ product, onAddToCart }) {
   const {
@@ -45,10 +42,9 @@ function PDP({ product, onAddToCart }) {
     else setMainSliderImage(gallery[currentImageIndex - 1]);
   }
 
-  function addProductToCart() {
+  function addProductToCart(count) {
     const attributesValues = Object.values(fullAttributeObject);
-    if (!attributesValues.length || attributesValues.includes("") || !inStock)
-      return;
+    if (count !== attributesValues.length) return;
     const cartProduct = {
       productId: product_id,
       id: id + attributesValues.join("-"),
@@ -112,28 +108,16 @@ function PDP({ product, onAddToCart }) {
           </div>
         </div>
         <div className="col-5">
-          <h3>{name}</h3>
-          <AttributesList
+          <ProductDetails
+            name={name}
             attributes={attributes}
-            onCompleteAttribute={getFullAttribute}
+            currency={currency}
+            amount={amount}
+            addProductToCart={addProductToCart}
+            inStock={inStock}
+            description={parseDescription(description)}
+            getFullAttribute={getFullAttribute}
           />
-          <BoldPTag>PRICE:</BoldPTag>
-          <BoldPTag>
-            {currency}
-            {amount}
-          </BoldPTag>
-          <p>
-            <CustomButton
-              dataTestID={"add-to-cart"}
-              onClick={addProductToCart}
-              disabled={!inStock}
-            >
-              ADD TO CART
-            </CustomButton>
-          </p>
-          <p data-testid="product-description">
-            {parseDescription(description)}
-          </p>
         </div>
       </div>
     </div>

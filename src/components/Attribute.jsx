@@ -7,11 +7,13 @@ function Attribute({
   selectedAttribute,
   inCart = false,
   selectedAttributeCart = "",
+  entered
 }) {
   const { items, name, type } = attribute;
   const [selected, setSelected] = useState(selectedAttributeCart);
   function handleSelectAttribute(value) {
     if (!inCart) {
+      entered(name);
       setSelected(value);
       selectedAttribute({ [name]: value });
     }
