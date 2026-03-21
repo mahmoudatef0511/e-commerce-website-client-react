@@ -11,11 +11,12 @@ function AttributeItem({
     <div
       className="col-2"
       data-testid={`${inCart ? "cart-item" : "product"}-attribute-${attributeName.toLowerCase().split(" ").join("-")}-${value}${selected ? "-selected" : ""}`}
+      onClick={onSelect}
     >
       {type === "text" && (
         <p
           className={`attribute-item ${selected ? "attribute-item-text-selected" : ""}`}
-          onClick={onSelect}
+          // onClick={onSelect}
         >
           {value}
         </p>
@@ -24,7 +25,7 @@ function AttributeItem({
         <p
           className={`attribute-item attribute-item-swatch ${selected ? "attribute-item-swatch-selected" : ""}`}
           style={{ backgroundColor: `${value}` }}
-          onClick={onSelect}
+          // onClick={onSelect}
         ></p>
       )}
     </div>
