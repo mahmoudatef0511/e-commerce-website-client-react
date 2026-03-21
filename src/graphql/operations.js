@@ -1,4 +1,5 @@
-export const graphqlURL = import.meta.env.VITE_API_URL;
+export const graphqlURL =
+  import.meta.env.VITE_API_URL || "http://localhost:8000/graphql";
 
 export const getAllProductsQuery = (category) => {
   return {

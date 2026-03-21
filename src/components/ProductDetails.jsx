@@ -1,3 +1,4 @@
+// ProductDetails.jsx
 import { useState } from "react";
 import AttributesList from "./AttributesList";
 import BoldPTag from "./BoldPTag";
@@ -13,17 +14,27 @@ function ProductDetails({
   inStock,
   description,
 }) {
-  const [selectedAttributesCount, setSelectedAttributesCount] = useState(0);
+  const [selectedAttributes, setSelectedAttributes] = useState({});
+
+  const selectedCount = Object.keys(selectedAttributes).filter(
+    (key) => selectedAttributes[key] !== ""
+  ).length;
+
+  const allSelected = selectedCount === attributes.length;
+
+  function handleAttributeSelect(attributeName, value) {
+    const updated = { ...selectedAttributes, [attributeName]: value };
+    setSelectedAttributes(updated);
+    getFullAttribute(updated);
+  }
 
   return (
     <>
       <h3>{name}</h3>
       <AttributesList
         attributes={attributes}
-        onCompleteAttribute={getFullAttribute}
-        getSelectedAttributesCount={(count) =>
-          setSelectedAttributesCount(attributes.length - count)
-        }
+        onAttributeSelect={handleAttributeSelect}
+        selectedAttributes={selectedAttributes}
       />
       <BoldPTag>PRICE:</BoldPTag>
       <BoldPTag>
@@ -33,11 +44,8 @@ function ProductDetails({
       <p>
         <CustomButton
           dataTestID={"add-to-cart"}
-          onClick={() => addProductToCart(selectedAttributesCount)}
-          isDisabled={
-            !inStock ||
-            (attributes.length && selectedAttributesCount !== attributes.length)
-          }
+          onClick={() => addProductToCart(selectedCount)}
+          disabled={!inStock || (attributes.length > 0 && !allSelected)}
         >
           ADD TO CART
         </CustomButton>

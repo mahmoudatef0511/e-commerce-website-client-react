@@ -31,7 +31,7 @@ function CartItem({ item, onChangeCount }) {
               attribute={attribute}
               key={`${attribute.id}-${index}`}
               inCart={true}
-              selectedAttributeCart={selectedAttributes[attribute.name]}
+              selectedValue={selectedAttributes[attribute.name]}
             />
           ))}
         </div>

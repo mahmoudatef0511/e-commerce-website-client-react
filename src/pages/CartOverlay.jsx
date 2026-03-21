@@ -1,10 +1,8 @@
 import { useState } from "react";
 import CartItem from "../components/CartItem";
 import CustomButton from "../components/CustomButton";
-import { Link } from "react-router";
 
 function CartOverlay({
-  currentActiveCategory,
   cartItems,
   onChangeItemCount,
   onPlaceOrder,

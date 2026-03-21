@@ -1,23 +1,21 @@
-import { useState } from "react";
+// Attribute.jsx
 import AttributeItem from "./AttributeItem";
 import BoldPTag from "./BoldPTag";
 
 function Attribute({
   attribute,
-  selectedAttribute,
+  onAttributeSelect,
+  selectedValue,
   inCart = false,
-  selectedAttributeCart = "",
-  entered
 }) {
   const { items, name, type } = attribute;
-  const [selected, setSelected] = useState(selectedAttributeCart);
+
   function handleSelectAttribute(value) {
     if (!inCart) {
-      entered(name);
-      setSelected(value);
-      selectedAttribute({ [name]: value });
+      onAttributeSelect(name, value);
     }
   }
+
   return (
     <div
       className="row g-1"
@@ -30,7 +28,7 @@ function Attribute({
           item={item}
           key={`${item.id}-${index}-${type}`}
           type={type}
-          selected={selected === item.value}
+          selected={selectedValue === item.value}
           onSelect={() => handleSelectAttribute(item.value)}
           inCart={inCart}
         />

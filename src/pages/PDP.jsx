@@ -15,8 +15,7 @@ function PDP({ product, onAddToCart }) {
   const { amount, currency } = prices[0];
 
   const [mainSliderImage, setMainSliderImage] = useState(gallery[0]);
-
-  let fullAttributeObject = {};
+  const [fullAttributeObject, setFullAttributeObject] = useState({});
 
   function parseDescription(desc) {
     const parser = new DOMParser();
@@ -25,7 +24,7 @@ function PDP({ product, onAddToCart }) {
   }
 
   function getFullAttribute(attributeObject) {
-    fullAttributeObject = { ...attributeObject };
+    setFullAttributeObject({ ...attributeObject });
   }
 
   function handleNextImage() {
@@ -42,12 +41,9 @@ function PDP({ product, onAddToCart }) {
     else setMainSliderImage(gallery[currentImageIndex - 1]);
   }
 
-  function addProductToCart(count) {
+  function addProductToCart() {
     const attributesValues = Object.values(fullAttributeObject);
-    if (
-      count !== attributesValues.length ||
-      (!count && attributesValues.length)
-    )
+    if (attributes.length > 0 && attributesValues.length !== attributes.length)
       return;
     const cartProduct = {
       productId: product_id,
@@ -67,7 +63,6 @@ function PDP({ product, onAddToCart }) {
     setMainSliderImage(e.target.src);
   }
 
-  parseDescription(description);
   return (
     <div className="container text-left pdp-container p-5">
       <div className="row">
