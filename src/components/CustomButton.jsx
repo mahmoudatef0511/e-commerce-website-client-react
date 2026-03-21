@@ -1,23 +1,15 @@
 function CustomButton({
   children,
   onClick,
-  disabled = false,
+  isDisabled = true,
   dataTestID = "",
 }) {
-  return disabled ? (
+  return (
     <button
       data-testid={dataTestID}
       onClick={onClick}
-      className="w-50 custom-btn disabled"
-      disabled
-    >
-      {children}
-    </button>
-  ) : (
-    <button
-      data-testid={dataTestID}
-      onClick={onClick}
-      className="w-50 custom-btn"
+      className={`w-50 custom-btn ${isDisabled ? "disabled" : ""}`}
+      disabled={isDisabled}
     >
       {children}
     </button>

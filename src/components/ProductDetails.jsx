@@ -30,11 +30,11 @@ function ProductDetails({
         {currency}
         {amount}
       </BoldPTag>
-      <p data-testid="add-to-cart">
+      <p>
         <CustomButton
-        //   dataTestID={"add-to-cart"}
+          dataTestID={"add-to-cart"}
           onClick={() => addProductToCart(selectedAttributesCount)}
-          disabled={
+          isDisabled={
             !inStock ||
             (attributes.length && selectedAttributesCount !== attributes.length)
           }
